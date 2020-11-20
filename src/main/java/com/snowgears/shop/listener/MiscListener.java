@@ -168,25 +168,15 @@ public class MiscListener implements Listener {
 
                 if (plugin.useVault()) {
                     try {
-                        int multiplyValue = UtilMethods.getMultiplyValue(event.getLine(2));
+                        double multiplyValue = UtilMethods.getMultiplyValue(event.getLine(2));
                         String line3 = UtilMethods.cleanNumberText(event.getLine(2));
 
                         String[] multiplePrices = line3.split(" ");
                         if (multiplePrices.length > 1) {
-                            if (multiplePrices[0].contains("."))
-                                price = Double.parseDouble(multiplePrices[0]);
-                            else
-                                price = Integer.parseInt(multiplePrices[0]);
-
-                            if (multiplePrices[1].contains("."))
-                                priceCombo = Double.parseDouble(multiplePrices[1]);
-                            else
-                                priceCombo = Integer.parseInt(multiplePrices[1]);
+                            price = Double.parseDouble(multiplePrices[0]);
+                            priceCombo = Double.parseDouble(multiplePrices[1]);
                         } else {
-                            if (line3.contains("."))
-                                price = Double.parseDouble(line3);
-                            else
-                                price = Integer.parseInt(line3);
+                            price = Double.parseDouble(line3);
                         }
 
                         price *= multiplyValue;

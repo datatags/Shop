@@ -309,8 +309,8 @@ public class UtilMethods {
 
     //this takes a dirty (pre-cleaned) string and finds how much to multiply the final by
     //this utility allows the input of numbers like 1.2k (1200)
-    public static int getMultiplyValue(String text){
-        int multiplyBy = 1;
+    public static double getMultiplyValue(String text){
+        double multiplyBy = 1;
         for(int i=0; i<text.length(); i++) {
             switch (text.charAt(i)) {
                 case 'k':
