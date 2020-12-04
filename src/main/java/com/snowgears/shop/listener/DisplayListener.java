@@ -64,12 +64,15 @@ public class DisplayListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                HashMap<ItemStack, Boolean> recipes = new HashMap();
+                HashSet<ItemStack> recipes = new HashSet<>();
                 Iterator<Recipe> recipeIterator = plugin.getServer().recipeIterator();
                 while(recipeIterator.hasNext()) {
-                    recipes.put(recipeIterator.next().getResult(), true);
+                	ItemStack result = recipeIterator.next().getResult();
+                	if (result.getType() != Material.AIR) {
+                		recipes.add(result);
+                	}
                 }
-                allServerRecipeResults.addAll(recipes.keySet());
+                allServerRecipeResults.addAll(recipes);
                 Collections.shuffle(allServerRecipeResults);
             }
         }.runTaskLater(this.plugin, 1); //load all recipes on server once all other plugins are loaded
